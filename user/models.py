@@ -4,6 +4,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
+        # email로 회원가입
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -45,18 +46,14 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
 
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
+
+    # custom 유저모델을 기본 유저모델로 사용하기 위한 필수코드
+    def has_perm(self, perm, obj=None): # 권한이 있는지
         return True
 
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
+    def has_module_perms(self, app_label):  # App의 모델에 접근가능 하도록 
         return True
 
     @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        # Simplest possible answer: All admins are staff
+    def is_staff(self): # 관리자 화면에 접근하도록
         return self.is_admin
