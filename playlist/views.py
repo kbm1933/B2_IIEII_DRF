@@ -51,7 +51,7 @@ class PlayListDetailview(APIView):
     def get(self, request, article_id):
         # article = Article.objects.get(id=article_id)
         article = get_object_or_404(PlayList, id=article_id)
-        serializer = PlaySerializer(article)
+        serializer = PlayListSerializer(article)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
