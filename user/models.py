@@ -32,8 +32,10 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    # profile_img = models.ImageField()
-    # profile_song = models.CharField(max_length=100)   # music 테이블과 one to one 으로 수정될예정
+
+    username = models.CharField(max_length=50, blank=True, null=True)
+    profile_song = models.CharField(max_length=100, blank=True, null=True)   # music 테이블과 one to one 으로 수정될예정
+    profile_img = models.ImageField(default='profile_image/profile_default.jpg', upload_to='profile_image')
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
