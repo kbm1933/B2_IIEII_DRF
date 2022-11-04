@@ -42,14 +42,22 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'user',
     'musicplaylist',
-
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 
-    )
+    'SECURITY_DEFINITIONS': {
+            'api_key': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'Authorization'
+            }
+        }
+
 }
 
 
@@ -172,4 +180,14 @@ SIMPLE_JWT = {  # jwt customizing / token lifetime
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
 }

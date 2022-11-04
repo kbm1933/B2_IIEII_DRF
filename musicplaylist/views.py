@@ -5,16 +5,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from musicplaylist.models import Music, PlayList
 from musicplaylist.serializers import MusicSerializer, PlayListCustomSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCreateSerializer
+from drf_yasg.utils import swagger_auto_schema
 
 
 # 테스트용 전체 음악 DB 보기 API
 class MusicListview(APIView):
-    def get(self, request):
+    def get(self, request, format=None):
         musics = Music.objects.all( )
         serializer = MusicSerializer(musics, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
+    def post(self, request, format=None):
         serializer = MusicSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -26,13 +27,13 @@ class MusicListview(APIView):
 
 # 1. API 선호하는 음악 선택 - 추후 get은 top 100 으로 변경
 class PlayListUserSelect(APIView):
-    def get(self, request, user_id):
+    def get(self, request, user_id, format=None):
         musicplaylist100 = Music.objects.all()
         music_serializer = MusicSerializer(musicplaylist100, many=True)
         return Response(music_serializer.data, status=status.HTTP_200_OK)
 
-
-    def post(self, request, user_id):
+    @swagger_auto_schema(request_body=PlayListRecommendCreateSerializer)
+    def post(self, request, user_id, format=None):
         print(request.user)
         user_musicplaylist_create_serializer = PlayListRecommendCreateSerializer(data = request.data)
         if user_musicplaylist_create_serializer.is_valid(): 
@@ -58,6 +59,7 @@ class PlayListview(APIView):
         serializer = PlayListCustomSerializer(playlist, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(request_body=PlayListCreateSerializer)
     def post(self, request):
         serializer = PlayListCreateSerializer(data=request.data)
 
@@ -77,6 +79,7 @@ class PlayListDetailview(APIView):
         serializer = PlayListCustomSerializer(playlist)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(request_body=PlayListCreateSerializer)
     def put(self, request, playlist_id):
         playlist = get_object_or_404(PlayList, id=playlist_id)
         if request.user == playlist.playlist_user:
