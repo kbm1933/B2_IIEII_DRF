@@ -2,6 +2,7 @@ from django.db import models
 from user.models import User
 
 # Create your models here.
+
 class Music(models.Model):
     music_artist = models.CharField(max_length=25, default='')
     music_title = models.CharField(max_length=255, default='')
