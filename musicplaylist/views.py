@@ -6,13 +6,54 @@ from rest_framework.response import Response
 from musicplaylist.models import Music, PlayList
 from musicplaylist.serializers import MusicSerializer, PlayListCustomSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCreateSerializer
 from drf_yasg.utils import swagger_auto_schema
+import pandas as pd
+from musicplaylist.models import Music
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 
 # 테스트용 전체 음악 DB 보기 API
 class MusicListview(APIView):
     def get(self, request, format=None):
+        dbtest_musics = Music.objects.all().values()
+        print(dbtest_musics)
+
+        dbtest_musics_pandas = pd.DataFrame(dbtest_musics)
+        print(dbtest_musics_pandas)
+
+        # df.columns = ['id', 'music_title','music_artist','music_genre']
+        # print(df.columns)
+
+        counter_vector = CountVectorizer(ngram_range=(1,2), encoding = u'utf-8')
+        c_vector_genres = counter_vector.fit_transform(dbtest_musics_pandas['music_genre'])
+        c_vector_genres.shape
+        counter_vector.vocabulary_
+
+        print(c_vector_genres)
+
+        similarity_genre = cosine_similarity(c_vector_genres, c_vector_genres)
+        print(similarity_genre)
+
+        similarity_genre.shape
+
+        def recommend_music_list(dbtest_musics, sim_matrix, music_title, top=10):
+            target_music_index = dbtest_musics[dbtest_musics['music_title']== music_title].index.values
+
+            dbtest_musics['similarity'] = sim_matrix[target_music_index, :].reshape(-1,1)
+
+            temp = dbtest_musics.sort_values(by='similarity', ascending=False)
+            final_index = temp.index.values[ :top]
+            return dbtest_musics.iloc[final_index]
+
+        similar_music = recommend_music_list(dbtest_musics_pandas, similarity_genre,'우린 그렇게 사랑해서')
+        similar_music_01 = similar_music[['music_title','similarity']]
+        print(similar_music_01)
+
         musics = Music.objects.all( )
         serializer = MusicSerializer(musics, many=True)
+
+
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
