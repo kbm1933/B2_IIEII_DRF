@@ -59,9 +59,6 @@ class PlayListRecommended(APIView):
                 
         # 사용자가 취향으로 선택한 플레이 리스트에서 한곡을 랜덤 선택 (제목)
         myselect = PlayList.objects.get(playlist_user=user_id, is_main=True)   # 사용자의 대표 플레이 리스트
-        print(myselect)
-        print(user_id)
-        print(request.user)
         myselect_title = myselect.playlist_select_musics.values("music_title")
         myselect_list = list(myselect_title)
 
@@ -77,10 +74,10 @@ class PlayListRecommended(APIView):
             similar_music_list.append(i)
         
         recommended_serializer = PlayListRecommendedSerializer(data = {"playlist_select_musics":similar_music_list})
-
+        
         if recommended_serializer.is_valid(): 
             recommended_serializer.save(playlist_user=request.user)
-            return Response(music_serializer.data+recommended_serializer.data, status=status.HTTP_201_CREATED) # 오류날 가능성 높음, 하나의 응답에 두개의 시리얼라이저 가능?
+            return Response((music_serializer.data+[recommended_serializer.data]), status=status.HTTP_201_CREATED)
         else:
             return Response(recommended_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
