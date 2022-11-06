@@ -54,13 +54,20 @@ class PlayListRecommended(APIView):
 
 # 3. 유저 커스텀 플레이 리스트
 class PlayListview(APIView):
-    def get(self, request):
-        playlist = PlayList.objects.all( )
-        serializer = PlayListCustomSerializer(playlist, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    def get(self, request, user_id):
+        playlist = PlayList.objects.filter(playlist_user_id = user_id)
+        playlist_serializer = PlayListCustomSerializer(playlist, many=True)
+
+        music_list = PlayList.objects.get(id = 2)
+        music_serializer = PlayListRecommendedSerializer(music_list)
+        data = {
+            "playlist" : playlist_serializer.data,
+            "music_list" :music_serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
 
     # @swagger_auto_schema(request_body=PlayListCreateSerializer)
-    def post(self, request):
+    def post(self, request, user_id):
         serializer = PlayListCreateSerializer(data=request.data)
 
         if serializer.is_valid():

@@ -9,9 +9,9 @@ urlpatterns = [
     path('<int:user_id>/playlist/recommended/', views.PlayListRecommended.as_view(), name='musicplaylistuserrecommnded_view'),
 
     # 3. API 유저커스텀 플레이 리스트
-    path('', views.PlayListview.as_view(), name='playlist_view'),
+    path('<int:user_id>/', views.PlayListview.as_view(), name='playlist_view'),
     
     # 4. API 유저커스텀 플레이 리스트 상세
-    path('<int:playlist_id>/', views.PlayListDetailview.as_view(), name='playlist_detail_view'),
+    path('<int:playlist_id>/detail/', views.PlayListDetailview.as_view(), name='playlist_detail_view'),
 
 ]
