@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Top100</title>
+  <link rel="stylesheet" type="text/css" href="css/top100.css">
+  <script src="js/make_playlist.js"></script>
+</head>
+
+<body>
+  <h1 class="title">Make Playlist</h1>
+  <div class="wrap">
+    <div class = 'music_list'>
+      <ol id="recommend_list"> </ol>
+    </div>
+
+    <div class = 'info'>
+        <p>곡을 선택해주세요</p>
+    <form>
+        <label for="title">TITLE</label>
+        <input type="text" id = 'title' name ='title' placeholder="playlist title">
+        
+        <label for="content">CONTENT</label>
+        <input type="text" id ='content' name ='content' placeholder="content">  
+        
+        <button type ='button' id="choice_btn" onclick="make_playlist()">플레이리스트 생성</button>
+    </form>
+        </div>
+  </div>
+  <script src="js/api.js"></script>
+</body>
+
+</html>

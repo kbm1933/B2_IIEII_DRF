@@ -1,6 +1,4 @@
-function move(url){ 
-    window.location.href = url
-};
+
 
 async function handleSignin(){
     const email = document.getElementById("email").value
@@ -18,8 +16,6 @@ async function handleSignin(){
         })
     })
     console.log(response);
-    move_url = 'login.html'
-    move(move_url)
     
 }
 
@@ -54,8 +50,6 @@ async function handleLogin(){
     }).join(''));
     
     localStorage.setItem('payload', jsonPayload);
-    move_url = 'top100.html'
-    move(move_url)
 }
 
 
@@ -72,10 +66,13 @@ async function music_check() {
         }
     }
     const token = localStorage.getItem('access')
+    const payload = localStorage.getItem('payload')
+    const personObj = JSON.parse(payload)
+    const userId = personObj['user_id']
 
     console.log(music_id)
 
-    const response = await fetch("http://127.0.0.1:8000/musicplaylist/2/playlist/select/",{
+    const response = await fetch(`http://127.0.0.1:8000/musicplaylist/${userId}/playlist/select/`,{
         headers: {
             'Authorization' : 'Bearer ' + token,
             'content-type' : 'application/json',
@@ -88,6 +85,35 @@ async function music_check() {
     })
     console.log(response)
     alert("완료");
-    move_url = 'main.html'
-    move(move_url)
+    window.location.replace('main.html')
+}
+
+async function make_playlist(){
+    var length = document.getElementsByName("playlist_checkbox").length;
+    const music_id = []
+    for (var i=0; i<length; i++){
+        if(document.getElementsByName("playlist_checkbox")[i].checked == true){
+            music_id.push(document.getElementsByName('playlist_checkbox')[i].value);
+        }
+    }
+    const token = localStorage.getItem('access')
+    const title = document.getElementById("title").value
+    const content = document.getElementById("content").value
+    console.log(title, content,  music_id)
+
+    const response = await fetch(`http://127.0.0.1:8000/musicplaylist/${userId}/`,{
+        headers: {
+            'Authorization' : 'Bearer ' + token,
+            'content-type' : 'application/json',
+        },
+        method : 'POST',
+        body : JSON.stringify({
+            "playlist_select_musics" : music_id,
+            "playlist_title" : title,
+            "playlist_content" : content
+        }) 
+    })
+    console.log(response)
+    alert("완료");
+    window.location.replace('profile.html')
 }
