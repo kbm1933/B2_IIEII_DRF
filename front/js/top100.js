@@ -1,8 +1,14 @@
 
 console.log('top100 list 불러옴')
 
+const payload = localStorage.getItem('payload')
+const personObj = JSON.parse(payload)
+const userId = personObj['user_id']
+console.log(userId)
+
+
 window.onload = async function loadTop100(){
-    const response = await fetch ('http://127.0.0.1:8000/musicplaylist/2/playlist/select/', {method:"GET"})
+    const response = await fetch (`http://127.0.0.1:8000/musicplaylist/${userId}/playlist/select/`, {method:"GET"})
 
     response_json = await response.json()
 
