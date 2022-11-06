@@ -8,21 +8,21 @@ class MusicSerializer(serializers.ModelSerializer):
         model = Music
         fields = '__all__'
 
-
 # 1. [POST] API - 선호하는 음악 선택에서 플레이리스트 create 만드는 것
 class PlayListRecommendCreateSerializer(serializers.ModelSerializer):
-    playlist_user = serializers.SerializerMethodField()
-
-    def get_playlist_user(self, obj):
-        return obj.playlist_user.id
 
     class Meta:
         model = PlayList
-        fields = ("playlist_select_musics", "playlist_user")
-
+        fields = ("playlist_select_musics", )
+        
+class TestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Music
+        fields = ['music_title', 'music_artist', 'music_img']
 
 # 2. API - 추천 플레이리스트 에서 쓰이는 Seriazlier
 class PlayListRecommendedSerializer(serializers.ModelSerializer):
+    playlist_select_musics = TestSerializer(many=True)
     class Meta:
         model = PlayList
         fields = ("playlist_select_musics",)
@@ -49,5 +49,3 @@ class PlayListCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayList
         fields = ("playlist_title", "playlist_select_musics","playlist_content")
-
-
