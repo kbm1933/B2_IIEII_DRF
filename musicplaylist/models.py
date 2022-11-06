@@ -7,7 +7,8 @@ class Music(models.Model):
     music_artist = models.CharField(max_length=25, default='')
     music_title = models.CharField(max_length=255, default='')
     music_genre = models.CharField(max_length=25, default='')
-    # music_img = models.ImageField(null=True, upload_to='images/', blank=True, editable=True)
+    music_img = models.TextField(null=True, blank=True) #크롤링 이미지 url
+
 
     def __str__(self):
         return str(self.music_title)
