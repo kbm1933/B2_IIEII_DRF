@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Top100</title>
+  <link rel="stylesheet" type="text/css" href="css/top100.css">
+  <script src="js/top100.js"></script>
+</head>
+
+<body>
+  <h1 class="title">CHOICE</h1>
+  <div class="wrap">
+    <div class = 'music_list'>
+      <ol id="top100_list"> </ol>
+    </div>
+
+    <div class = 'info'>
+      <p>좋아하는 곡을 선택해주세요</p>      
+      <button id="choice_btn" onclick="music_check()">선택 완료</button>
+    </div>
+  </div>
+  <script src="js/api.js"></script>
+</body>
+
+</html>
