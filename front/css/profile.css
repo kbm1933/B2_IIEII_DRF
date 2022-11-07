@@ -1,0 +1,36 @@
+#title {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.wrap {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.palylist_box {
+    border : 1px solid gray;
+    font-size: 20px;
+    width: 400px;
+    
+}
+
+.btn {
+    margin: 20px auto;
+    width: 400px;
+}
+
+.playlist_btn {
+    width: 200px;
+    margin: auto;
+    display: block;
+}
+
+
+li{
+    margin-bottom: 5px;
+}
