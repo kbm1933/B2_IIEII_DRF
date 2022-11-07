@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Detail</title>
+  <link rel="stylesheet" type="text/css" href="css/detail.css">
+  <script src="js/detail.js"></script>
+</head>
+
+<body>
+  <h1 id="title"></h1>
+  <div class="wrap">
+    <div class = 'music_list'>
+      <ol id="my_playlist"> </ol>
+    </div>
+
+    <div class = 'info'>
+      
+      <p id="content">CONTENT</p>
+      <p id="create_at">CREATED_AT</p>
+      
+        
+        <button type ='button' id="choice_btn" onclick="make_playlist()">수정하기</button>
+    </div>
+  </div>
+  <script src="js/api.js"></script>
+</body>
+
+</html>
