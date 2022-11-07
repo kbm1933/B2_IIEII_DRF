@@ -106,7 +106,6 @@ async function music_check() {
     })
     console.log(response)
     alert("완료");
-    window.location.replace('main.html')
 }
 
 async function make_playlist(){
