@@ -72,9 +72,15 @@ class PlayListview(APIView):
 
         music_list = PlayList.objects.get(id = 2)
         music_serializer = PlayListRecommendedSerializer(music_list)
+
+        # 프로필 생성을 위해 유저 데이터를 가지고 왔습니다.
+        user_data = User.objects.all()
+        user_serializer = UserSerializer(user_data, many=True)
+
         data = {
             "playlist" : playlist_serializer.data,
-            "music_list" :music_serializer.data
+            "music_list" :music_serializer.data,
+            "user_profile":user_serializer.data
         }
         return Response(data, status=status.HTTP_200_OK)
 
