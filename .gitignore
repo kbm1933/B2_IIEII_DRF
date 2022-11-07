@@ -134,5 +134,11 @@ dmypy.json
 runs/
 0001_initial.py
 0002_initial.py
+0002_playlist_is_main.py
+0003_music_music_img.py
 recommend/
 media/
+.vscode/
+front/images
+*.json
+front/

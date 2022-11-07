@@ -7,6 +7,7 @@ from user.models import User
 from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCustomSerializer, PlayListCreateSerializer, PlayListEditSerializer
 from user.serializers import UserSerializer
 from similarity import random_choice, recommend_music_list
+import random
 
 
 # 1. API 선호하는 음악 선택 - 추후 get은 top 100 으로 변경
@@ -24,7 +25,7 @@ class PlayListUserSelect(APIView):
 
              # 사용자 선택 곡 중 랜덤 한 곡 지정
             choice_music = random_choice(user_id) 
-
+        
             # 랜덤 선택된 곡 유사도 계산, 추천리스트를 music_id값으로 저장
             similar_music = recommend_music_list(choice_music['music_title'])    
             similar_music_01 = similar_music[['id', 'music_title','music_artist', 'music_genre']]
@@ -33,7 +34,8 @@ class PlayListUserSelect(APIView):
             for i in similar_lists:
                 similar_music_list.append(i)
             
-            recommended_serializer = PlayListRecommendCreateSerializer(data = {"playlist_select_musics":similar_music_list})
+            recommended_serializer = PlayListRecommendCreateSerializer(data = {"playlist_select_musics":similar_music_list,
+        "playlist_title" : "recommend playlist" })
 
             if recommended_serializer.is_valid(): 
                 recommended_serializer.save(playlist_user=request.user)
@@ -46,7 +48,7 @@ class PlayListUserSelect(APIView):
 class PlayListRecommended(APIView):
     def get(self, request, user_id):
 
-        recommend_playlist = PlayList.objects.last() #마지막 플레이리스트 = 추천된 플레이리스트
+        recommend_playlist = PlayList.objects.filter(playlist_title = "recommend playlist").last() #마지막 플레이리스트 = 추천된 플레이리스트
         recommend_playlist_serializer = PlayListRecommendedSerializer(recommend_playlist)
         print(recommend_playlist_serializer.data)
 
@@ -101,6 +103,16 @@ class PlayListDetailview(APIView):
     def get(self, request, playlist_id):
         playlist = get_object_or_404(PlayList, id=playlist_id)
         serializer = PlayListCustomSerializer(playlist)
+
+        # recommend_list = PlayList.objects.filter(playlist_title = "recommend playlist").last()
+        # recommend_serializer = PlayListRecommendedSerializer(recommend_list)
+        
+        # data = {
+        #     "my_playlist" : serializer.data,
+        #     "recommend_list" : recommend_serializer.data
+        # }
+
+        # return Response(data, status=status.HTTP_200_OK)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # @swagger_auto_schema(request_body=PlayListCreateSerializer)

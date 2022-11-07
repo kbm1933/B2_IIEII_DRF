@@ -34,7 +34,7 @@ def recommend_music_list(music_title, top=10):
 
 def random_choice(user_id):
     # 사용자가 취향으로 선택한 플레이 리스트에서 한곡을 랜덤 선택 (제목)
-    myselect = PlayList.objects.get(playlist_user_id=user_id, is_main=True)   # 사용자의 대표 플레이 리스트
+    myselect = PlayList.objects.last()   # 사용자의 대표 플레이 리스트
     myselect_title = myselect.playlist_select_musics.values("music_title")
     myselect_list = list(myselect_title)
 
