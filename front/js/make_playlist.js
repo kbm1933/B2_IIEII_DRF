@@ -37,7 +37,38 @@ window.onload = async function loadTop100(){
     });
 } 
 
+async function make_playlist(){
+    var length = document.getElementsByName("playlist_checkbox").length;
+    const music_id = []
+    for (var i=0; i<length; i++){
+        if(document.getElementsByName("playlist_checkbox")[i].checked == true){
+            music_id.push(document.getElementsByName('playlist_checkbox')[i].value);
+        }
+    }
+    const token = localStorage.getItem('access')
+    const title = document.getElementById("title").value
+    const content = document.getElementById("content").value
+    console.log(title, content,  music_id)
+
+    const response = await fetch(`http://127.0.0.1:8000/musicplaylist/${userId}/`,{
+        headers: {
+            'Authorization' : 'Bearer ' + token,
+            'content-type' : 'application/json',
+        },
+        method : 'POST',
+        body : JSON.stringify({
+            "playlist_select_musics" : music_id,
+            "playlist_title" : title,
+            "playlist_content" : content
+        })
+    }).then(window.location.replace('profile.html'))
+    console.log(response)
+    alert("완료");
+}
+
+
 function handleLogout(){
     localStorage.clear()
     window.location.replace("login.html")
 }
+

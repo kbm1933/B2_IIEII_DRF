@@ -59,10 +59,9 @@ async function edit_playlist() {
             "playlist_title": title,
             "playlist_content": content
         })
-    })
+    }).then(window.location.replace("profile.html"))
     console.log(response)
     alert("완료");
-    window.location.replace('profile.html')
 }
 
 async function delete_playlist() {
