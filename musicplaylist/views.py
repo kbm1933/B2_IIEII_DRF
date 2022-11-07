@@ -3,8 +3,9 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from musicplaylist.models import Music, PlayList
+from user.models import User
 from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCustomSerializer, PlayListCreateSerializer
-
+from user.serializers import UserSerializer
 from similarity import random_choice, recommend_music_list
 
 
@@ -49,7 +50,18 @@ class PlayListRecommended(APIView):
         recommend_playlist_serializer = PlayListRecommendedSerializer(recommend_playlist)
         print(recommend_playlist_serializer.data)
 
-        return Response(recommend_playlist_serializer.data, status=status.HTTP_201_CREATED)
+        # 뮤직 모델스도 갖고 와서 한번에 데이터에 넣어줬습니다.
+        music_playlist100 = Music.objects.filter(id__lte=100)
+        music_playlist100_serializer = MusicSerializer(music_playlist100, many=True)
+        print(music_playlist100_serializer)
+        
+        data = {
+            "recommend_playlist" : recommend_playlist_serializer.data,
+            # 뮤직 top 100 추가
+            "music_top100":music_playlist100_serializer.data,
+        }
+
+        return Response(data, status=status.HTTP_200_OK)
         
 
 # 3. 유저 커스텀 플레이 리스트
@@ -60,9 +72,15 @@ class PlayListview(APIView):
 
         music_list = PlayList.objects.get(id = 2)
         music_serializer = PlayListRecommendedSerializer(music_list)
+
+        # 프로필 생성을 위해 유저 데이터를 가지고 왔습니다.
+        user_data = User.objects.all()
+        user_serializer = UserSerializer(user_data, many=True)
+
         data = {
             "playlist" : playlist_serializer.data,
-            "music_list" :music_serializer.data
+            "music_list" :music_serializer.data,
+            "user_profile":user_serializer.data
         }
         return Response(data, status=status.HTTP_200_OK)
 

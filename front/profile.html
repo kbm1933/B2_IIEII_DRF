@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="css/profile.css">
     <script src="js/profile.js"></script>
 </head>
 <body>
     <h1 id="title"></h1>
-    <div class = 'wrap'>
-        <!-- <div class="profile_box">
-            <div class="profile_img"></div>
-            <div id="profile_info"></div>
-        </div> -->
+    
+    <!-- 유저 프로파일 추가 html -->
+    <div class="five columns">
+        <div class="profile_img">
+            <div id = 'user_profile_img'>
+            </div>
+        </div>
+            <!-- <div class="profile_box">
+                <div class="profile_img"></div>
+                <div id="profile_info"></div>
+            </div> -->
+    </div>
+    <div class="five columns">
+
         <div class = "palylist_box">
             <ol id="playlist_info"></ol>
         </div>
-    </div>
-    <div class="btn">
-        <button type = 'button' class="playlist_btn" onclick="window.open('make_playlist.html')">플레이리스트 만들기</button>
+        <div class="btn">
+            <button type = 'button' class="playlist_btn" onclick="window.open('make_playlist.html')">플레이리스트 만들기</button>
+        </div>
     </div>
 </body>
 </html>

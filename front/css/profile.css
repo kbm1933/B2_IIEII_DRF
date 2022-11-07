@@ -34,3 +34,11 @@
 li{
     margin-bottom: 5px;
 }
+
+/* 이미지 필드 추가 */
+
+img {
+    width: 300px;
+    margin: auto;
+    display: block;
+}
