@@ -7,7 +7,7 @@ from user.models import User
 from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCustomSerializer, PlayListCreateSerializer, PlayListEditSerializer
 from user.serializers import UserSerializer
 from similarity import random_choice, recommend_music_list
-import random
+
 
 
 # 1. API 선호하는 음악 선택 - 추후 get은 top 100 으로 변경
@@ -17,7 +17,6 @@ class PlayListUserSelect(APIView):
         music_serializer = MusicSerializer(music_playlist100, many=True)
         return Response(music_serializer.data, status=status.HTTP_200_OK)
 
-    # @swagger_auto_schema(request_body=PlayListRecommendCreateSerializer)
     def post(self, request, user_id, format=None):
         user_musicplaylist_create_serializer = PlayListRecommendCreateSerializer(data = request.data)
         if user_musicplaylist_create_serializer.is_valid(): 
@@ -86,7 +85,6 @@ class PlayListview(APIView):
         }
         return Response(data, status=status.HTTP_200_OK)
 
-    # @swagger_auto_schema(request_body=PlayListCreateSerializer)
     def post(self, request, user_id):
         serializer = PlayListCreateSerializer(data=request.data)
 
@@ -103,19 +101,8 @@ class PlayListDetailview(APIView):
     def get(self, request, playlist_id):
         playlist = get_object_or_404(PlayList, id=playlist_id)
         serializer = PlayListCustomSerializer(playlist)
-
-        # recommend_list = PlayList.objects.filter(playlist_title = "recommend playlist").last()
-        # recommend_serializer = PlayListRecommendedSerializer(recommend_list)
-        
-        # data = {
-        #     "my_playlist" : serializer.data,
-        #     "recommend_list" : recommend_serializer.data
-        # }
-
-        # return Response(data, status=status.HTTP_200_OK)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-    # @swagger_auto_schema(request_body=PlayListCreateSerializer)
+  
     def put(self, request, playlist_id):
         playlist = get_object_or_404(PlayList, id=playlist_id)
         if request.user == playlist.playlist_user:
