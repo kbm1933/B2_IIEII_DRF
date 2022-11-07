@@ -14,7 +14,7 @@ window.onload = async function loadTop100(){
 
     const musics_list = document.getElementById('recommend_list')
 
-    playlist_response = response_json.music_list.playlist_select_musics
+    playlist_response = response_json.music_list
 
     console.log(playlist_response)
 
