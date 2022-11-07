@@ -1,22 +1,40 @@
 
+function password_valid(password, password2) {
+    if (password != password2) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
-async function handleSignin(){
+async function handleSignup(){
     const email = document.getElementById("email").value
+    const username = document.getElementById("username").value
     const password = document.getElementById("password").value
+    const password2 = document.getElementById("password2").value
     console.log(email, password)
 
-    const response = await fetch("http://127.0.0.1:8000/user/signup/",{
-        headers: {
-            'content-type' : 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            "email": email,
-            "password": password
-        })
-    })
-    console.log(response);
-    
+    if (password_valid(password, password2)) {
+        const response = await fetch('http://127.0.0.1:8000/user/signup/', {
+            headers:{
+                'content-type' : 'application/json',
+            },
+            method:'POST',
+            body: JSON.stringify({
+                "email":email,
+                "username":username,
+                "password":password,
+            })
+        }).then(window.location.replace("login.html"))
+        alert("가입되었습니다!")
+        console.log(response)
+    }
+    else {
+        console.log("제출하지 않음")
+        window.location.reload()
+    }
 }
 
 async function handleLogin(){
@@ -50,12 +68,15 @@ async function handleLogin(){
     }).join(''));
     
     localStorage.setItem('payload', jsonPayload);
+    window.location.replace("top100.html")
 }
 
 
 function handleLogout(){
     localStorage.clear()
+    window.location.replace("login.html")
 }
+
 
 async function music_check() {
     var length = document.getElementsByName("top100_checkbox").length;

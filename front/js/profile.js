@@ -60,3 +60,7 @@ window.onload = async function loadTop100(){
 } 
 
 
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}

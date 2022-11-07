@@ -77,8 +77,12 @@ async function delete_playlist() {
         },
         method: 'DELETE',
 
-    })
+    }).then(window.location.replace("profile.html"))
     console.log(response)
     alert("삭제 완료");
-    window.location.replace('profile.html')
 }}
+
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}

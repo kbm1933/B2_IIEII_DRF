@@ -56,3 +56,8 @@ window.onload = async function loadMylist() {
 
     });
 } 
+
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}
