@@ -70,8 +70,8 @@ class PlayListview(APIView):
         playlist = PlayList.objects.filter(playlist_user_id = user_id)
         playlist_serializer = PlayListCustomSerializer(playlist, many=True)
 
-        music_list = PlayList.objects.get(id = 2)
-        music_serializer = PlayListRecommendedSerializer(music_list)
+        music_list = Music.objects.all()
+        music_serializer = MusicSerializer(music_list, many=True)
 
         # 프로필 생성을 위해 유저 데이터를 가지고 왔습니다.
         user_data = User.objects.all()
