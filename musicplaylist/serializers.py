@@ -50,3 +50,9 @@ class PlayListCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayList
         fields = ("playlist_title", "playlist_select_musics","playlist_content")
+
+# 4. API - 유저가 만든 플레이리스트 수정용
+class PlayListEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlayList
+        fields = ("playlist_title","playlist_content")

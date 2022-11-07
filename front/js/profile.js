@@ -44,11 +44,12 @@ window.onload = async function loadTop100(){
 
         const playlist_title = document.createElement("li")
         const detail_txt = document.createElement("a")
-        detail_txt.setAttribute("href",'playlist_detail.html')
+        const pl_id = element.id
+        detail_txt.setAttribute("href",`detail.html?pl_id=${pl_id}`)
         detail_txt.innerText = "보기"
 
         if(element.playlist_title === null){
-            playlist_title.innerText = "이름없는 플레이리스트" 
+            playlist_title.innerText = "Playlist" + element.id
         } else {
             playlist_title.innerText = element.playlist_title
         }
