@@ -21,4 +21,11 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):   # emailë¡œ ë
     def get_token(cls, user):
         token = super().get_token(user)
         token['name'] = user.email
+        token['username'] = user.username
+
         return token
+
+class ProfileDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("email", "username", "profile_song")

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Main</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/user_detail.js"></script>
+</head>
+
+<body>
+<div class="write-box">
+    <hr>
+    <b>회원정보수정</b>
+    <hr>
+    <form>
+        <input type="email" name="email" id="email" placeholder="email">
+        <hr>
+        <input type="text" name="username" id="username" placeholder="username">
+        <hr>
+        <input type="text" name="profile_song" id="profile_song" placeholder="profile_song">
+        <div class='input-group'>
+            <label class="input-group-text" for="images">사진 업로드</label>
+            <input class="form-control" name="images" type="file" accept="image/*"  onchange="imageView(this)"/>
+        </div>
+        <div class="image-preview"><img id="tempImage"></div>
+        <button type="button" onclick="handleupdate()">수정하기</button>
+    </form>
+</div>
+</body>
