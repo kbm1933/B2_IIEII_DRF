@@ -35,3 +35,8 @@ async function handleupdate(){
     })
     console.log(response);
 }
+
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}

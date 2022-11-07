@@ -36,3 +36,8 @@ window.onload = async function loadTop100(){
         musics_list.appendChild(music_check)
     });
 } 
+
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}

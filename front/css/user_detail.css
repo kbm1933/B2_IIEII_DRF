@@ -1,0 +1,16 @@
+.write-box{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagetitle{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.input-group{
+    margin-top: 20px;
+}

@@ -42,7 +42,7 @@ class PlayListCustomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PlayList
-        fields = ("id", "playlist_title", "playlist_select_musics", "playlist_update_at", "playlist_user", "playlist_likes")
+        fields = ("id", "playlist_content", "playlist_title", "playlist_select_musics", "playlist_update_at", "playlist_user", "playlist_likes")
 
 
 # 3. API - 유저가 만든 플레이리스트 및 상세 create 용 seriailizer

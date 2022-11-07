@@ -1,0 +1,45 @@
+.wrap{
+    /* background-color:beige; */
+    width : 500px;
+    height: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+.input_boxes{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;            
+}
+
+.form-control{
+    margin-top: 10px;
+}
+
+.signup_btns{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;  
+    margin-top: 20px;
+}
+
+.signup_btns > button{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.all-box {
+text-align: center;
+border: 1px solid lightgray;
+border-radius: 3px;
+width: 750px;
+margin:auto auto 1rem auto;
+padding: 60px 20px 20px 20px;
+left: 50%
+}

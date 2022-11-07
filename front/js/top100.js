@@ -34,3 +34,10 @@ window.onload = async function loadTop100(){
         top100.appendChild(music_check)
     });
 } 
+
+
+
+function handleLogout(){
+    localStorage.clear()
+    window.location.replace("login.html")
+}

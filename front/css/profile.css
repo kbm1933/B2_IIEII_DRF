@@ -19,9 +19,9 @@
     
 }
 
-.btn {
+.makebtn {
     margin: 20px auto;
-    width: 400px;
+    width: 390px;
 }
 
 .playlist_btn {
@@ -34,6 +34,36 @@
 li{
     margin-bottom: 5px;
 }
+
+/* --------------------------------- */
+
+.row{
+    margin-top: 100px;
+}
+
+.userprofile {
+    margin-top: 100px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.item {
+    margin-top: 30px;
+}
+
+
+
+.top_100_all{
+    margin-top: 100px;
+}
+
+.list_title{
+    margin-bottom: 30px;
+}
+
 
 /* 이미지 필드 추가 */
 

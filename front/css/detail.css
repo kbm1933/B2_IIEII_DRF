@@ -1,0 +1,22 @@
+.wrap{
+    width : 500px;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playlistnamebox{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.music_list{
+    margin-bottom: 100px;
+}
+
+.info{
+    margin-bottom: 100px;
+}
