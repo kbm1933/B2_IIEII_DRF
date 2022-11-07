@@ -26,9 +26,6 @@ window.onload = async function loadMylist() {
     list_json = response_json.playlist_select_musics
 
     list_json.forEach(element => {
-        // const add_btn = document.createElement("button")
-        // add_btn.innerText = "제거"
-
         const my_music = document.createElement("li")
         my_music.innerText = element.music_title + '\u00a0' + '-' + '\u00a0' + element.music_artist
 
@@ -37,8 +34,6 @@ window.onload = async function loadMylist() {
 
         my_list.appendChild(my_music)
         my_list.appendChild(img)
-        // my_list.appendChild(add_btn)
-
     });
 }
 
@@ -55,7 +50,6 @@ async function edit_playlist() {
         },
         method: 'PUT',
         body: JSON.stringify({
-            // "playlist_select_musics" : [1,2,3],
             "playlist_title": title,
             "playlist_content": content
         })

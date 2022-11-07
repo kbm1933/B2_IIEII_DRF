@@ -33,7 +33,6 @@ window.onload = async function loadTop100(){
         }
     }
 
-
     const profile_info = document.getElementById('title')
     const playlist_info = document.getElementById('playlist_info')
 
@@ -59,7 +58,6 @@ window.onload = async function loadTop100(){
         playlist_info.appendChild(detail_txt)
     });
 } 
-
 
 function handleLogout(){
     localStorage.clear()

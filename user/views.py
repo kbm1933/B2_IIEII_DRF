@@ -5,7 +5,6 @@ from user.serializers import UserSerializer, CustomTokenObtainPairSerializer, Pr
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import get_object_or_404
 from .models import User
-# Create your views here.
 
 class UserView(APIView):
     def post(self, request):

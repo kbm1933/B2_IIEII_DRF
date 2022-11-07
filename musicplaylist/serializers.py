@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from musicplaylist.models import Music, PlayList
 
-
 # 1. [GET] 음악 리스트 조회에 쓰이는 Serializer
 class MusicSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,7 +26,6 @@ class PlayListRecommendedSerializer(serializers.ModelSerializer):
         model = PlayList
         fields = ("playlist_select_musics",)
 
-
 # 3,4 API - 유저가 만든 플레이리스트 및 상세 get 용 seriailizer
 class PlayListCustomSerializer(serializers.ModelSerializer):
     playlist_user = serializers.SerializerMethodField()
@@ -43,7 +41,6 @@ class PlayListCustomSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayList
         fields = ("id", "playlist_content", "playlist_title", "playlist_select_musics", "playlist_update_at", "playlist_user", "playlist_likes")
-
 
 # 3. API - 유저가 만든 플레이리스트 및 상세 create 용 seriailizer
 class PlayListCreateSerializer(serializers.ModelSerializer):

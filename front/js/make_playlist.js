@@ -1,4 +1,3 @@
-
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
@@ -65,7 +64,6 @@ async function make_playlist(){
     console.log(response)
     alert("완료");
 }
-
 
 function handleLogout(){
     localStorage.clear()

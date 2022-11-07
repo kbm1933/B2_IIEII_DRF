@@ -1,4 +1,3 @@
-
 function password_valid(password, password2) {
     if (password != password2) {
         alert("비밀번호가 일치하지 않습니다.");
@@ -71,12 +70,10 @@ async function handleLogin(){
     window.location.replace("top100.html")
 }
 
-
 function handleLogout(){
     localStorage.clear()
     window.location.replace("login.html")
 }
-
 
 async function music_check() {
     var length = document.getElementsByName("top100_checkbox").length;

@@ -8,20 +8,15 @@ function imageView(input) {
 
         reader.onload = function(e) {
             $('#tempImage').attr('src', e.target.result)
-            //  {#.width(300)#}
-            //  {#.height(300);#}
         }
 
         reader.readAsDataURL(input.files[0]);
     }}
 
-
 async function handleupdate(){
     const email = document.getElementById("email").value
     const username = document.getElementById("username").value
     const profile_song = document.getElementById("profile_song").value
-    
-
     const response = await fetch(`http://127.0.0.1:8000/user/${userId}/`, {
         headers: {
             'content-type' : 'application/json',

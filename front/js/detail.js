@@ -24,7 +24,6 @@ window.onload = async function loadMylist() {
         title.innerText = response_json.playlist_title
     }
 
-
     const content = document.getElementById('content')
     const my_content = document.createElement('p')
     my_content.innerText = response_json.playlist_content

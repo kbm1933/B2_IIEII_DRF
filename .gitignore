@@ -139,6 +139,8 @@ runs/
 recommend/
 media/
 .vscode/
-front/images
+
 *.json
-front/
+
+musiclist/settings.py
+

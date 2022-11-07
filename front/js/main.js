@@ -1,4 +1,3 @@
-
 console.log('recommend list 불러옴')
 
 const payload = localStorage.getItem('payload')
@@ -13,21 +12,15 @@ window.onload = async function loadTop100(){
     },    
     method:"GET"
     })
-
     response_json = await response.json()
 
-    // response_json2 = response_json.playlist_select_musics
-    // console.log(response_json2)\
-
     // 숫자로 변수 있는게 헷갈려서 response_json2를 세분화해서 변경했습니다.
-
     playlist_response = response_json.recommend_playlist.playlist_select_musics
     console.log(playlist_response)
     
     const recommend = document.getElementById('recommend_music_list')
 
     playlist_response.forEach(element => {
-
         const recommend_music = document.createElement("li")
         recommend_music.innerText = element.music_title + '\u00a0'+ '-'  + '\u00a0' + element.music_artist
 
@@ -38,8 +31,7 @@ window.onload = async function loadTop100(){
         recommend.appendChild(img)
     
     });
-
-    
+ 
     music_top100_response_json = response_json.music_top100
     console.log(playlist_response)
     
@@ -48,12 +40,6 @@ window.onload = async function loadTop100(){
     // 뮤직 top 100 리스트 추가
 
     music_top100_response_json.forEach(element => {
-
-        // const music_check = document.createElement("input")
-        // music_check.setAttribute("type", "checkbox")
-        // music_check.setAttribute("value", element.id)
-        // music_check.setAttribute("name", 'top100_checkbox')
-
         const top100_music = document.createElement("li")
         top100_music.innerText = element.music_title + '\u00a0'+ '-'  + '\u00a0' + element.music_artist
 
@@ -62,11 +48,8 @@ window.onload = async function loadTop100(){
         
         top100.appendChild(top100_music)
         top100.appendChild(img)
-        // top100.appendChild(music_check)
     });
 } 
-
-
 
 function handleLogout(){
     localStorage.clear()

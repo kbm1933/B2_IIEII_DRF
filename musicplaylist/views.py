@@ -8,8 +8,6 @@ from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerial
 from user.serializers import UserSerializer
 from similarity import random_choice, recommend_music_list
 
-
-
 # 1. API 선호하는 음악 선택 - 추후 get은 top 100 으로 변경
 class PlayListUserSelect(APIView):
     def get(self, request, user_id, format=None):
