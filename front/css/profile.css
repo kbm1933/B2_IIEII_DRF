@@ -16,7 +16,8 @@
     border : 1px solid gray;
     font-size: 20px;
     width: 400px;
-    
+    height: 500px;
+    overflow: auto;
 }
 
 .makebtn {
