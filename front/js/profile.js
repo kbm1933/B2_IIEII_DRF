@@ -1,6 +1,7 @@
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
+const username = personObj['username']
 
 console.log('profile 불러옴')
 
@@ -37,7 +38,7 @@ window.onload = async function loadTop100(){
     const playlist_info = document.getElementById('playlist_info')
 
     profile_json = response_json.playlist
-    profile_info.innerText = profile_json[0].playlist_user + '님의 Playlist'
+    profile_info.innerText = username + '님의 Playlist'
 
     
     profile_json.forEach(element => {

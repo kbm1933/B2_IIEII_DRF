@@ -9,6 +9,7 @@ from musicplaylist.models import Music, PlayList
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wetyle_share.settings')
 django.setup()
 
+
 # 유사도 구하는 함수
 def recommend_music_list(music_title, top=10):
     # 추천리스트
