@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from musicplaylist.models import Music, PlayList
 from user.models import User
-from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCustomSerializer, PlayListCreateSerializer
+from musicplaylist.serializers import MusicSerializer, PlayListRecommendedSerializer, PlayListRecommendCreateSerializer, PlayListCustomSerializer, PlayListCreateSerializer, PlayListEditSerializer
 from user.serializers import UserSerializer
 from similarity import random_choice, recommend_music_list
 
@@ -107,7 +107,7 @@ class PlayListDetailview(APIView):
     def put(self, request, playlist_id):
         playlist = get_object_or_404(PlayList, id=playlist_id)
         if request.user == playlist.playlist_user:
-            serializer = PlayListCreateSerializer(playlist, data=request.data)
+            serializer = PlayListEditSerializer(playlist, data=request.data)
 
             if serializer.is_valid():
                 serializer.save()
