@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Top100</title>
+  <link rel="stylesheet" type="text/css" href="css/top100.css">
+  
+</head>
+
+<body>
+  <h1 id="page_title"></h1>
+  <div class="wrap">
+    <div class = 'music_list'>
+      <ol id="recommend_playlist"> </ol>
+    </div>
+
+    <div class = 'info'>
+        <p>곡을 선택해주세요</p>
+    <form>
+        <label for="title">TITLE</label>
+        <input type="text" id = 'title' name ='title' placeholder="playlist title">
+        
+        <label for="content">CONTENT</label>
+        <input type="text" id ='content' name ='content' placeholder="content">  
+        
+        <button type ='button' id="choice_btn" onclick="edit_playlist()">수정완료</button>
+        <button type ='button' value="confirm" onclick="delete_playlist()">삭제</button>
+    </form>
+        </div>
+  </div>
+  <script src="js/edit.js"></script>
+</body>
+
+</html>
