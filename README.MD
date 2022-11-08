@@ -21,7 +21,10 @@
     - 장르 기반의 음악 추천 시스템
 
 ## Wireframe
-    https://www.notion.so/IIEII-73143dd9bd204b8298aa8a20959279ee#fcb6972857c24292b911b1badfdee7f9
+[figma](https://www.figma.com/file/61J4GBqSGcx69471DbFLZ7/4_team_project?node-id=6%3A2)로 이동
+
+## Notion
+[notion](https://www.notion.so/IIEII-73143dd9bd204b8298aa8a20959279ee#fcb6972857c24292b911b1badfdee7f9)으로 이동
 
 ## 트러블 슈팅
 Link : [트러블 슈팅 위키로 이동](https://github.com/kbm1933/B2_IIEII_DRF/wiki/Editing-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
