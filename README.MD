@@ -28,14 +28,16 @@
 - 추천 시스템(협업필터링)
     - 장르 기반의 음악 추천 시스템
 
-## Wireframe
-[figma](https://www.figma.com/file/61J4GBqSGcx69471DbFLZ7/4_team_project?node-id=6%3A2)로 이동
-
-## Notion
-[notion](https://www.notion.so/IIEII-73143dd9bd204b8298aa8a20959279ee#fcb6972857c24292b911b1badfdee7f9)으로 이동
+## 프로젝트 Notion
+Link : [노션](https://www.notion.so/IIEII-73143dd9bd204b8298aa8a20959279ee#fcb6972857c24292b911b1badfdee7f9)
 
 ## 트러블 슈팅
-Link : [트러블 슈팅 위키로 이동](https://github.com/kbm1933/B2_IIEII_DRF/wiki/Editing-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
+Link : [트러블 슈팅 위키](https://github.com/kbm1933/B2_IIEII_DRF/wiki/Editing-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
+
+## Wireframe
+![wireframe](https://user-images.githubusercontent.com/6766202/200443534-131b67a5-99f6-4933-af1d-7fa0064f3067.png)
+Link : [피그마](https://www.figma.com/proto/61J4GBqSGcx69471DbFLZ7/4_team_project?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2)
+
 
 ## API 명세서
 - Music Play List
