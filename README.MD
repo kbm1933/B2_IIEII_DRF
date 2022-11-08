@@ -9,6 +9,14 @@
 - 장고 DRF를 실습 하며 배운 것을 바탕으로 추천 시스템과 연동한 웹서비스 개발
 - Django와 추천시스템을 연동하여 기한(2022.11.02 ~ 2022.11.08)내에 프로젝트 완성을 목표
 
+
+## ⏲️ 개발기간
+2022년 11월 2일 ~ 2022년 11월 8일
+
+## 🧙 멤버구성
+팀장 [김병문](https://github.com/kbm1933)
+팀원 [김동익](https://github.com/DongIkkk), [오형석](https://github.com/auberr), [이혜원](https://github.com/wonprogrammer), [최정윤](https://github.com/uniqquej)
+
 ## 주요 구현 기능
 
 - 장고
